@@ -3,19 +3,17 @@ from sklearn.decomposition import PCA
 import pandas as pd
 import numpy as np
 
-iris_df = pd.read_csv("iris_big.csv")
-
-X = iris_df.iloc[:, 0:4]
-y_labels = iris_df.iloc[:, 4]
+iris = pd.read_csv("iris_big.csv")
+X = iris.drop(columns=['target_name'])
+y = iris['target_name']
 
 # Konwertujemy gatunki tekstowe na numery (0, 1, 2) dla wykresu
-y = pd.factorize(y_labels)[0]
-target_names = np.unique(y_labels)
+y = pd.factorize(y)[0]
+target_names = np.unique(y)
 
 pca_full = PCA(n_components=4)
 pca_full.fit(X)
 
-print("Wyjaśniona wariancja przez poszczególne kolumny:")
 for i, ratio in enumerate(pca_full.explained_variance_ratio_):
     print(f"Składowa {i}: {ratio:.4f} ({ratio*100:.2f}%)")
 
@@ -33,9 +31,7 @@ for color, i, target_name in zip(colors, range(len(target_names)), target_names)
                 label=target_name)
 
 plt.legend(loc='best', shadow=False)
-plt.title('PCA zbioru danych Iris (2 komponenty)')
-plt.xlabel('PC1')
-plt.ylabel('PC2')
+plt.title('PCA zbioru danych Iris')
 
 plt.savefig('pca_iris_2d.png')
 print("\nWykres został zapisany jako 'pca_iris_2d.png'")
