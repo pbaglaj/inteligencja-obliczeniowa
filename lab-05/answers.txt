@@ -1,0 +1,24 @@
+Jako model domyślny w naszym skrypcie wybrałem YOLOv8n (Nano) ze stajni Ultralytics. Oto odpowiedzi na pytania teoretyczne:
+
+Jakie klasy wykrywa i ile ich jest? Model wykrywa 80 klas obiektów. Znajdziesz wśród nich m.in. ludzi, pojazdy (samochody, rowery, pociągi), zwierzęta (psy, koty, ptaki), przedmioty codziennego użytku (plecaki, parasole, butelki) czy jedzenie.
+
+Na jakim zbiorze był trenowany? Został pretrenowany na słynnym zbiorze MS COCO (Common Objects in Context), który jest standardem w dziedzinie detekcji obiektów.
+
+Jaki model CNN jest w środku? YOLOv8 wykorzystuje zmodyfikowaną architekturę CSPDarknet53 jako "backbone" (rdzeń ekstrahujący cechy z obrazu). Wyróżnia się tym, że jest modelem typu anchor-free (nie używa predefiniowanych skrzynek kotwiczących) oraz posiada decoupled head (oddzielne ścieżki sieci neuronowej do klasyfikacji obiektu i przewidywania współrzędnych jego bounding boxa).
+
+Analiza wyników: Zmiana progów confidence
+Gdy uruchomisz ten kod na swoim zdjęciu i wygenerujesz pliki, zaobserwujesz następujące zjawiska, o których musisz wspomnieć w swoim zadaniu:
+
+Próg 0.1 (Niski): Sieć będzie bardzo "odważna" w przewidywaniu.
+
+Mniejsze i zamazane obiekty: Zostaną wykryte.
+
+False positives (fałszywie pozytywne): Pojawi się ich bardzo dużo. Np. cień na ścianie zostanie zidentyfikowany jako osoba, a skrzynka pocztowa jako samochód. Model "strzela", widząc minimalne podobieństwo kształtu.
+
+Próg 0.3 - 0.5 (Średni): To optymalne wartości (domyślnie YOLO używa często 0.25). Balansuje to odrzucanie ewidentnego "szumu" ze znajdowaniem poprawnej ilości rzeczywistych obiektów.
+
+Próg 0.7 (Wysoki): Sieć jest bardzo ostrożna.
+
+Wykryje tylko te obiekty, które są duże, wyraźne, doskonale oświetlone i niczym niezasłonięte.
+
+Znikną wszystkie fałszywie pozytywne detekcje, ale pojawi się zjawisko False Negatives (model przeoczy obiekty, które ewidentnie są na zdjęciu, np. osobę stojącą w oddali lub częściowo zasłonięty samochód).
