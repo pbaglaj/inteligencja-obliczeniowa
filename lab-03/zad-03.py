@@ -38,11 +38,11 @@ for nazwa, clf in klasyfikatory.items():
     
     cm = confusion_matrix(y_test, y_pred)
     
-    print(f"--- {nazwa} ---")
+    print(nazwa)
     print(f"Dokładność: {dokladnosc:.2f}%")
     print("Macierz błędów:")
     print(cm)
-    print("-" * 30 + "\n")
+    print("\n")
 
 # Sortujemy wyniki malejąco po dokładności
 posortowane_wyniki = sorted(wyniki_dokladnosci.items(), key=lambda item: item[1], reverse=True)
