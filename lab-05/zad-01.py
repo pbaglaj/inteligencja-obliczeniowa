@@ -6,7 +6,6 @@ from collections import defaultdict
 from ultralytics import YOLO
 
 def process_image(img_path, model, thresholds, output_dir):
-    """Przetwarza zdjęcie dla różnych progów confidence."""
     print(f"\n--- Przetwarzanie zdjęcia: {img_path.name} ---")
     
     for conf in thresholds:
@@ -28,7 +27,7 @@ def process_image(img_path, model, thresholds, output_dir):
                 "class_id": int(box.cls[0]),
                 "class_name": model.names[int(box.cls[0])],
                 "confidence": float(box.conf[0]),
-                "bbox_xyxy": box.xyxy[0].tolist() # format [xmin, ymin, xmax, ymax]
+                "bbox_xyxy": box.xyxy[0].tolist()
             })
             
         # Zapis do JSON
@@ -112,11 +111,11 @@ def process_video(video_path, model, thresholds, output_dir):
         print(f"Zapisano: {video_filename.name}, {json_filename.name}, {stats_filename.name}")
 
 if __name__ == "__main__":
-    # Inicjalizacja modelu
     model = YOLO('yolov8n.pt')
     
-    # Ścieżki do katalogów (odczyt i zapis w folderze skryptu)
     base_dir = Path(__file__).resolve().parent
+    output_dir = base_dir / "wyniki_zad_1"
+    output_dir.mkdir(exist_ok=True)
     
     IMAGE_NAME = "office_yolo.png"
     VIDEO_NAME = "office_yolo.mp4"
@@ -124,15 +123,14 @@ if __name__ == "__main__":
     img_path = base_dir / IMAGE_NAME
     video_path = base_dir / VIDEO_NAME
     
-    # Wymagane progi
     thresholds = [0.1, 0.3, 0.5, 0.7]
     
     if img_path.exists():
-        process_image(img_path, model, thresholds, base_dir)
+        process_image(img_path, model, thresholds, output_dir)
     else:
         print(f"Brak pliku zdjęcia: {img_path}")
         
     if video_path.exists():
-        process_video(video_path, model, thresholds, base_dir)
+        process_video(video_path, model, thresholds, output_dir)
     else:
         print(f"Brak pliku wideo: {video_path}")
