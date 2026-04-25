@@ -1,0 +1,10 @@
+## a) 
+Jak zakodować problem w Pythonie?Najbardziej optymalnym i czytelnym sposobem z punktu widzenia biblioteki numpy i pygad jest stworzenie kilku list/tablic. Potrzebujemy listy przechowującej nazwy przedmiotów (do końcowego wyświetlenia) oraz dwóch tablic numpy.array przechowujących odpowiednio wartości oraz wagi. Dzięki temu w funkcji fitness możemy użyć szybkiego mnożenia wektorowego (np. numpy.sum(solution * weights)).
+## b) 
+Jak napisać sensownie funkcję fitness?Funkcja fitness musi oceniać, jak dobre jest dane rozwiązanie, czyli sumować wartości wybranych przedmiotów. Kluczowy jest jednak limit wagi (25 kg). Należy wprowadzić twardą karę: jeśli suma wag wybranych przedmiotów przekroczy 25 kg, funkcja fitness musi zwrócić 0. W przeciwnym razie zwraca sumę wartości.
+## c) 
+Jak sensownie dobrać parametry algorytmu?Problem ma stosunkowo niewielką przestrzeń poszukiwań (11 genów, czyli $2^{11} = 2048$ możliwych kombinacji).Wielkość populacji (sol_per_pop): 20-50 będzie w zupełności wystarczająca.Liczba pokoleń (num_generations): 50-100 pokoleń zapewni zbieżność.Mutacja (mutation_percent_genes): Ponieważ chromosom ma tylko 11 genów, wartość około 10% oznacza, że średnio mutacji ulegnie 1 gen na chromosom. Wyższe wartości mogłyby wprowadzić zbyt duży chaos.Przestrzeń genów (gene_space): Bezwzględnie [0, 1] (0 - nie bierzemy przedmiotu, 1 - bierzemy).
+## d) 
+Jakie jest najlepsze rozwiązanie?Zgodnie z parametrami podanymi w zadaniu, maksymalna możliwa wartość do spakowania w 25 kg to 1630 zł.Powinniśmy zabrać następujące przedmioty:obraz-pejzaż (300 zł, 7 kg)obraz-portret (200 zł, 6 kg)laptop (500 zł, 5 kg)srebrne sztućce (100 zł, 1 kg)porcelana (250 zł, 3 kg)skórzana torebka (280 zł, 3 kg)
+## e & f) 
+Skuteczność i czas działania algorytmu (10 odpaleń)Mechanizm testujący skuteczność i średni czas został zaimplementowany w poniższym kodzie. Do zatrzymania ewolucji w momencie znalezienia optimum (1630 zł) wykorzystujemy parametr stop_criteria=["reach_1630"].

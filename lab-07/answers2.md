@@ -1,0 +1,8 @@
+## a, b) 
+Przestrzeń genów (gene_space)Ponieważ interesują nas liczby rzeczywiste z przedziału $[0, 1)$, musimy zdefiniować ciągłą przestrzeń genów. W bibliotece PyGAD robimy to za pomocą słownika, określając dolną i górną granicę: {'low': 0.0, 'high': 0.99999}. Dzięki temu algorytm genetyczny nie będzie losował zer i jedynek, ale precyzyjne wartości ułamkowe.
+## c) 
+Funkcja fitness (fitness_func)Naszym celem jest maksymalizacja wytrzymałości stopu. Funkcja podana przez inżynierów:$$endurance(x, y, z, u, v, w) = e^{-2 \cdot (y-\sin(x))^2} + \sin(z \cdot u) + \cos(v \cdot w)$$zwraca od razu wartość, którą chcemy zmaksymalizować. Dlatego nasza funkcja fitness będzie po prostu zwracać wynik funkcji endurance.
+## d) 
+Parametry populacji i chromosomuKażdy chromosom reprezentuje jeden potencjalny stop i składa się dokładnie z 6 proporcji metali (genów). Długość chromosomu (num_genes) wynosi więc 6. Wielkość populacji możemy ustawić na 50, a liczbę pokoleń na 100–150, co powinno z zapasem wystarczyć na zbiegnięcie się algorytmu.
+## e) 
+Procent mutacji (mutation_percent_genes)Chromosom ma tylko 6 genów. Jeśli ustawimy domyślną, niską mutację (np. 10%), PyGAD wyliczy, że $10\% \text{ z } 6 = 0.6 \text{ gena}$. Zaokrągli to do 0, mutacja nie zajdzie wcale, a Ty otrzymasz irytujący "czerwony warning". Aby zagwarantować mutację co najmniej 1 gena w chromosomie, musimy ustawić wartość na minimum 17% (ponieważ $1/6 \approx 16.67\%$). Ustawienie 20% będzie bezpieczne i optymalne.
