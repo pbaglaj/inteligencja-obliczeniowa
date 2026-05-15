@@ -18,3 +18,14 @@
 2026-04-25 16:12:38,738 - pyswarms.single.global_best - INFO - Optimization finished | best cost: -2.8169276441554376, best pos: [0.41421583 0.41629415 0.97432589 0.99416606 0.52146518 0.22388701]
 2026-04-25 16:12:48,073 - pyswarms.single.global_best - INFO - Optimize for 1000 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
 2026-04-25 16:12:48,371 - pyswarms.single.global_best - INFO - Optimization finished | best cost: -2.827529835159517, best pos: [0.4076208  0.45244175 0.99589451 0.99328004 0.14249956 0.42138194]
+2026-04-30 11:03:16,895 - pyswarms.single.global_best - INFO - Optimize for 1000 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2026-04-30 11:03:17,236 - pyswarms.single.global_best - INFO - Optimization finished | best cost: -2.821087828718497, best pos: [0.5519993  0.45322346 0.99377999 0.99499877 0.21627597 0.42422973]
+2026-04-30 16:28:14,881 - pyswarms.single.global_best - INFO - Optimize for 1000 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2026-04-30 16:28:15,625 - pyswarms.single.global_best - INFO - Optimization finished | best cost: -2.8247408511625585, best pos: [0.39512797 0.39437631 0.99014304 0.98058317 0.47487941 0.06556302]
+2026-04-30 16:56:31,070 - pyswarms.single.global_best - INFO - Optimize for 1000 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2026-04-30 16:56:31,356 - pyswarms.single.global_best - INFO - Optimization finished | best cost: -2.8327927389193026, best pos: [1.02950310e-01 1.04507533e-01 9.84846801e-01 9.99286849e-01
+ 6.63535196e-01 3.94092986e-05]
+2026-04-30 16:56:42,447 - pyswarms.single.global_best - INFO - Optimize for 1000 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2026-04-30 16:56:42,790 - pyswarms.single.global_best - INFO - Optimization finished | best cost: -2.8175080141089976, best pos: [0.61649278 0.54132151 0.99544353 0.98678225 0.69712952 0.21820534]
+2026-04-30 17:12:23,304 - pyswarms.single.global_best - INFO - Optimize for 1000 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2026-04-30 17:12:23,603 - pyswarms.single.global_best - INFO - Optimization finished | best cost: -2.8304098332207674, best pos: [0.52906374 0.4591186  0.99975985 0.99799349 0.40493214 0.26366472]

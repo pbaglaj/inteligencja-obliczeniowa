@@ -33,7 +33,6 @@ x_min = np.zeros(6)
 x_max = np.ones(6)
 my_bounds = (x_min, x_max)
 
-# Ustawienia algorytmu
 options = {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
 
 # Inicjalizacja optymalizatora (dimensions=6)
@@ -43,17 +42,13 @@ optimizer = ps.single.GlobalBestPSO(n_particles=10, dimensions=6, options=option
 cost, pos = optimizer.optimize(f, iters=1000)
 
 print("\n--- WYNIKI ---")
-# Odwracamy znak 'cost', aby wyświetlić rzeczywistą wytrzymałość na plusie
 print(f"Maksymalna znaleziona wytrzymałość stopu: {-cost}")
 print(f"Optymalne proporcje metali [x, y, z, u, v, w]:\n{pos}")
 
-# 1. Wyrysowanie historii kosztu za pomocą wbudowanej funkcji pyswarms
 plot_cost_history(cost_history=optimizer.cost_history)
 
-# 2. Dodanie tytułów dla czytelności
 plt.title("Historia optymalizacji PSO (Minimalizacja kosztu)")
 plt.xlabel("Iteracje")
 plt.ylabel("Koszt (-Endurance)")
 
-# 3. Wyświetlenie wykresu
 plt.show()

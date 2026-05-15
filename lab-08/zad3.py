@@ -1,16 +1,17 @@
 import numpy as np
 import random
+import matplotlib.pyplot as plt
 
 maze = np.array([
     [1,1,1,1,1,1,1,1,1,1,1,1],
-    [1,0,0,0,1,0,0,0,1,0,0,1],
+    [1,0,0,0,1,0,0,0,0,0,0,1],
     [1,1,1,0,0,0,1,0,1,1,0,1],
-    [1,0,0,0,1,0,1,0,0,0,0,1],
+    [1,0,0,0,1,0,1,0,1,0,0,1],
     [1,0,1,0,1,1,0,0,1,1,0,1],
     [1,0,0,1,1,0,0,0,1,0,0,1],
-    [1,0,0,0,0,0,1,0,0,0,1,1],
+    [1,0,0,0,0,0,1,0,1,0,1,1],
     [1,0,1,0,0,1,1,0,1,0,0,1],
-    [1,0,1,1,1,0,0,0,1,1,0,1],
+    [1,0,1,0,1,0,0,1,1,1,0,1],
     [1,0,1,0,1,1,0,1,0,1,0,1],
     [1,0,1,0,0,0,0,0,0,0,0,1], # [10][10] to wyjście (zero obok ramki)
     [1,1,1,1,1,1,1,1,1,1,1,1]
@@ -110,3 +111,22 @@ for iteration in range(ITERATIONS):
 
 print(f"Najkrótsza znaleziona ścieżka: {best_length - 1} kroków.")
 print(f"Trasa: {best_path}")
+
+if best_path is not None:
+    maze_view = np.where(maze == 1, 0.2, 1.0)
+    plt.figure(figsize=(7, 7))
+    plt.imshow(maze_view, cmap="gray", origin="upper")
+
+    path_rows = [pos[0] for pos in best_path]
+    path_cols = [pos[1] for pos in best_path]
+    plt.plot(path_cols, path_rows, color="red", linewidth=3)
+    plt.scatter([START[1]], [START[0]], color="green", s=120, label="Start")
+    plt.scatter([EXIT[1]], [EXIT[0]], color="blue", s=120, label="Wyjście")
+    plt.title("Znaleziona trasa")
+    plt.legend(loc="upper right")
+    plt.xticks(range(maze.shape[1]))
+    plt.yticks(range(maze.shape[0]))
+    plt.grid(color="lightgray", linewidth=0.5)
+    plt.show()
+else:
+    print("Nie znaleziono trasy do wyjścia.")
