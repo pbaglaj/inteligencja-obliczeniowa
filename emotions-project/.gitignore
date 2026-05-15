@@ -1,0 +1,35 @@
+# Datasety (surowe dane nigdy w repo)
+data/
+
+# Wagi modelu (zbyt duze do commita)
+*.pth
+*.pt
+*.onnx
+
+# Tymczasowe pliki webapp
+webapp/uploads/
+webapp/results/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+.env
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Notebooks - checkpoints / outputy
+.ipynb_checkpoints/
+
+# Logi
+*.log
