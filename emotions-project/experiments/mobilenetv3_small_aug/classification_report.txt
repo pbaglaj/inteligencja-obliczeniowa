@@ -1,0 +1,17 @@
+Model: MobileNetV3-small (transfer learning, ImageNet -> RAF-DB)
+Test accuracy: 75.00%
+Best val accuracy: 73.93%
+
+              precision    recall  f1-score   support
+
+    Surprise     0.7268    0.7842    0.7544       329
+        Fear     0.4231    0.5946    0.4944        74
+     Disgust     0.4101    0.4562    0.4320       160
+   Happiness     0.9060    0.8540    0.8792      1185
+     Sadness     0.7681    0.6653    0.7130       478
+       Anger     0.5430    0.7407    0.6266       162
+     Neutral     0.7010    0.7000    0.7005       680
+
+    accuracy                         0.7500      3068
+   macro avg     0.6397    0.6850    0.6572      3068
+weighted avg     0.7632    0.7500    0.7544      3068
