@@ -27,7 +27,7 @@ transform = transforms.Compose([
 ])
 
 # --- INICJALIZACJA NOWEGO MEDIAPIPE TASKS API ---
-base_options = python.BaseOptions(model_asset_path='detectors/blaze_face_short_range.tflite')
+base_options = python.BaseOptions(model_asset_path='assets/detectors/blaze_face_short_range.tflite')
 options = vision.FaceDetectorOptions(base_options=base_options, min_detection_confidence=0.6)
 detector = vision.FaceDetector.create_from_options(options)
 
